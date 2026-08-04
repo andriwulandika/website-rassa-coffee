@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -47,11 +48,15 @@ export function Header() {
       )}
     >
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
-        <Link
-          href="/"
-          className="text-2xl font-semibold tracking-tight text-primary"
-        >
-          Rassa Coffee
+        <Link href="/" className="flex items-center gap-2" aria-label="Rassa Coffee - Beranda">
+          <Image
+            src="/images/logo.jpeg"
+            alt="Rassa Coffee"
+            width={48}
+            height={48}
+            className="h-12 w-12 rounded-xl object-cover"
+            priority
+          />
         </Link>
 
         <NavigationMenu className="hidden md:flex">
@@ -90,7 +95,14 @@ export function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="bg-background">
-            <SheetTitle className="text-left text-xl text-primary">
+            <SheetTitle className="flex items-center gap-2 text-left text-xl text-primary">
+              <Image
+                src="/images/logo.jpeg"
+                alt="Rassa Coffee"
+                width={40}
+                height={40}
+                className="h-10 w-10 rounded-lg object-cover"
+              />
               Rassa Coffee
             </SheetTitle>
             <nav className="mt-8 flex flex-col gap-2">
