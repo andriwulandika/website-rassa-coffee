@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { whatsapp } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Menu | Rassa Coffee",
@@ -138,15 +139,11 @@ export default function MenuPage() {
             Mau Pesan Antar?
           </h2>
           <p className="mx-auto mt-3 max-w-sm text-balance leading-relaxed text-foreground/70">
-            Nikmati menu Rassa Coffee tanpa perlu keluar rumah — chat nomor
-            pesan antar kami.
+            Nikmati menu Rassa Coffee tanpa perlu keluar rumah — chat kami
+            dengan format pesanan yang sudah siap, tinggal isi.
           </p>
           <Button asChild size="lg" className="mt-6 rounded-full px-8 text-base">
-            <Link
-              href="https://wa.me/6282252550984"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href={whatsapp.orderLink} target="_blank" rel="noopener noreferrer">
               Chat Pesan Antar
             </Link>
           </Button>

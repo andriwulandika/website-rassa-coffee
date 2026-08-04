@@ -1,6 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { AtSign, Globe, MapPin, MessageCircle } from "lucide-react";
+import { MapPin } from "lucide-react";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  WhatsAppIcon,
+} from "@/components/icons/SocialIcons";
+import { whatsapp } from "@/lib/whatsapp";
 
 const quickLinks = [
   { href: "/menu", label: "Menu" },
@@ -12,17 +18,17 @@ const socialLinks = [
   {
     href: "https://www.instagram.com/rassa_coffee?igsh=MXF0MGphNGJnajdueA==",
     label: "Instagram",
-    icon: AtSign,
+    icon: InstagramIcon,
   },
   {
     href: "https://www.facebook.com/share/1BsTJLj4v3/",
     label: "Facebook",
-    icon: Globe,
+    icon: FacebookIcon,
   },
   {
-    href: "https://wa.me/6282197638118",
+    href: whatsapp.greetingLink,
     label: "WhatsApp",
-    icon: MessageCircle,
+    icon: WhatsAppIcon,
   },
 ];
 

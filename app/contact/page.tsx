@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Globe, MapPin, MessageCircle, Truck } from "lucide-react";
+import { Globe, MapPin, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { whatsapp } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Contact | Rassa Coffee",
@@ -22,20 +23,10 @@ const contactCards = [
     ],
   },
   {
-    icon: MessageCircle,
-    title: "WhatsApp",
-    lines: ["+62 821-9763-8118", "+62 823-0444-3031"],
-    actions: [
-      { label: "Chat via WhatsApp", href: "https://wa.me/6282197638118" },
-    ],
-  },
-  {
     icon: Truck,
     title: "Pesan Antar",
     lines: ["+62 822-5255-0984"],
-    actions: [
-      { label: "Chat untuk Pesan Antar", href: "https://wa.me/6282252550984" },
-    ],
+    actions: [{ label: "Chat untuk Pesan Antar", href: whatsapp.orderLink }],
   },
   {
     icon: Globe,
@@ -64,7 +55,7 @@ export default function ContactPage() {
       </section>
 
       <section className="px-6 py-20">
-        <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-3">
           {contactCards.map(({ icon: Icon, title, lines, actions }) => (
             <div
               key={title}
@@ -104,19 +95,15 @@ export default function ContactPage() {
               Mau Pesan Antar?
             </h2>
             <p className="mx-auto mt-3 max-w-sm text-balance leading-relaxed text-foreground/70">
-              Nikmati kopi Rassa Coffee tanpa perlu keluar rumah — chat nomor
-              pesan antar kami dan pesanan siap diantar.
+              Nikmati kopi Rassa Coffee tanpa perlu keluar rumah — chat kami
+              dengan format pesanan yang sudah siap, tinggal isi.
             </p>
             <Button
               asChild
               size="lg"
               className="mt-6 rounded-full px-8 text-base"
             >
-              <Link
-                href="https://wa.me/6282252550984"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href={whatsapp.orderLink} target="_blank" rel="noopener noreferrer">
                 Chat Pesan Antar
               </Link>
             </Button>
@@ -136,11 +123,7 @@ export default function ContactPage() {
               variant="outline"
               className="mt-6 rounded-full border-primary px-8 text-base text-primary hover:bg-primary hover:text-primary-foreground"
             >
-              <Link
-                href="https://wa.me/6282197638118"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <Link href={whatsapp.b2bLink} target="_blank" rel="noopener noreferrer">
                 Chat WhatsApp Sekarang
               </Link>
             </Button>
