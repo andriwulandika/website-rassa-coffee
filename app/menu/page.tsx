@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Menu | Rassa Coffee",
@@ -127,6 +129,27 @@ export default function MenuPage() {
               </div>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="px-6 pb-16">
+        <div className="mx-auto max-w-2xl rounded-3xl border border-primary/10 bg-primary/5 p-10 text-center">
+          <h2 className="text-2xl font-semibold tracking-tight text-primary">
+            Mau Pesan Antar?
+          </h2>
+          <p className="mx-auto mt-3 max-w-sm text-balance leading-relaxed text-foreground/70">
+            Nikmati menu Rassa Coffee tanpa perlu keluar rumah — chat nomor
+            pesan antar kami.
+          </p>
+          <Button asChild size="lg" className="mt-6 rounded-full px-8 text-base">
+            <Link
+              href="https://wa.me/6282252550984"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Chat Pesan Antar
+            </Link>
+          </Button>
         </div>
       </section>
 
