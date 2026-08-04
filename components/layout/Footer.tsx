@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { AtSign, Globe, MapPin, MessageCircle } from "lucide-react";
 
 const quickLinks = [
@@ -19,10 +20,14 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight">
-              Rassa Coffee
-            </h2>
-            <p className="mt-3 max-w-xs text-sm text-background/70">
+            <Image
+              src="/images/logo.jpeg"
+              alt="Rassa Coffee"
+              width={56}
+              height={56}
+              className="h-14 w-14 rounded-xl object-cover"
+            />
+            <p className="mt-4 max-w-xs text-sm text-background/70">
               Kopi berkualitas dari Kutacane, disajikan dengan suasana cozy —
               untuk kamu yang datang duduk maupun bisnis yang butuh pasokan
               kopi premium.

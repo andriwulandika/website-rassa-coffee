@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Coffee, Handshake, Leaf } from "lucide-react";
 
 const highlights = [
@@ -24,24 +25,36 @@ const highlights = [
 export function About() {
   return (
     <section className="bg-background px-6 py-24">
-      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2 md:gap-16">
-        <div className="flex flex-col justify-center gap-5">
-          <span className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
-            Cerita Kami
-          </span>
-          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-primary sm:text-4xl">
-            Dari Kutacane, untuk Pecinta Kopi
-          </h2>
-          <p className="text-balance leading-relaxed text-foreground/70">
-            Rassa Coffee lahir dari kecintaan pada kopi asli Aceh Tenggara.
-            Kami merawat setiap proses — dari biji hingga cangkir — agar
-            kehangatan dan cita rasa khas Kutacane sampai ke meja Anda,
-            baik sebagai tempat singgah yang cozy maupun sebagai mitra
-            pasokan kopi untuk bisnis Anda.
-          </p>
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+          <div className="flex flex-col justify-center gap-5">
+            <span className="text-sm font-medium uppercase tracking-[0.2em] text-accent">
+              Cerita Kami
+            </span>
+            <h2 className="text-3xl font-semibold leading-tight tracking-tight text-primary sm:text-4xl">
+              Dari Kutacane, untuk Pecinta Kopi
+            </h2>
+            <p className="text-balance leading-relaxed text-foreground/70">
+              Rassa Coffee lahir dari kecintaan pada kopi asli Aceh Tenggara.
+              Kami merawat setiap proses — dari biji hingga cangkir — agar
+              kehangatan dan cita rasa khas Kutacane sampai ke meja Anda,
+              baik sebagai tempat singgah yang cozy maupun sebagai mitra
+              pasokan kopi untuk bisnis Anda.
+            </p>
+          </div>
+
+          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl md:aspect-auto">
+            <Image
+              src="/images/about-owner.jpeg"
+              alt="Rassa Coffee - biji kopi pilihan untuk mitra B2B"
+              fill
+              sizes="(min-width: 768px) 40vw, 90vw"
+              className="object-cover"
+            />
+          </div>
         </div>
 
-        <div className="flex flex-col gap-6">
+        <div className="mt-16 grid gap-6 sm:grid-cols-3">
           {highlights.map(({ icon: Icon, title, description }) => (
             <div
               key={title}
