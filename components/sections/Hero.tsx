@@ -27,9 +27,9 @@ export function Hero() {
         </h1>
 
         <p className="max-w-xl text-balance text-base leading-relaxed text-background/80 sm:text-lg">
-          Rassa Coffee menghadirkan biji kopi pilihan dari dataran tinggi Aceh
-          Tenggara — diseduh dengan hati di kedai kami, dan dipasok dengan
-          standar kualitas terbaik untuk mitra bisnis.
+          Rassa Coffee menghadirkan biji kopi pilihan dari dataran tinggi
+          Gayo, Takengon — diseduh dengan hati di kedai kami, dan dipasok
+          dengan standar kualitas terbaik untuk mitra bisnis.
         </p>
 
         <div className="mt-2 flex w-full flex-col gap-4 sm:w-auto sm:flex-row">

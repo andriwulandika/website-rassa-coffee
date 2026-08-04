@@ -9,9 +9,21 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { href: "#", label: "Instagram", icon: AtSign },
-  { href: "#", label: "Facebook", icon: Globe },
-  { href: "#", label: "WhatsApp", icon: MessageCircle },
+  {
+    href: "https://www.instagram.com/rassa_coffee?igsh=MXF0MGphNGJnajdueA==",
+    label: "Instagram",
+    icon: AtSign,
+  },
+  {
+    href: "https://www.facebook.com/share/1BsTJLj4v3/",
+    label: "Facebook",
+    icon: Globe,
+  },
+  {
+    href: "https://wa.me/6282197638118",
+    label: "WhatsApp",
+    icon: MessageCircle,
+  },
 ];
 
 export function Footer() {
@@ -28,9 +40,9 @@ export function Footer() {
               className="h-14 w-14 rounded-xl object-cover"
             />
             <p className="mt-4 max-w-xs text-sm text-background/70">
-              Kopi berkualitas dari Kutacane, disajikan dengan suasana cozy —
-              untuk kamu yang datang duduk maupun bisnis yang butuh pasokan
-              kopi premium.
+              Sejak 2016, dari mobil kopi keliling hingga kini gallery kopi
+              di Kutacane — kopi berkualitas dari dataran tinggi Gayo,
+              Takengon, disajikan dengan suasana cozy.
             </p>
             <div className="mt-4 flex items-start gap-2 text-sm text-background/70">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
@@ -65,6 +77,8 @@ export function Footer() {
                 <Link
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-background/10 transition-colors hover:bg-background/20"
                 >

@@ -17,7 +17,7 @@ const contactCards = [
     actions: [
       {
         label: "Buka di Google Maps",
-        href: "https://www.google.com/maps/search/Rassa+Coffee+Kutacane+Aceh+Tenggara",
+        href: "https://maps.app.goo.gl/5kfuWtH3tjHDM6Wh9",
       },
     ],
   },
