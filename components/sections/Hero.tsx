@@ -1,18 +1,19 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
     <section className="relative flex min-h-[90vh] w-full items-center justify-center overflow-hidden">
-      <Image
-        src="/images/hero-interior.jpeg"
-        alt="Suasana kedai Rassa Coffee di Kutacane"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/videos/hero-bloom-poster.jpg"
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/videos/hero-bloom.mp4" type="video/mp4" />
+      </video>
       <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/70 to-primary/90" />
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-6 px-6 py-24 text-center sm:gap-8">
