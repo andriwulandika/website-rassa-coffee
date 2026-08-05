@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { ADMIN_SESSION_COOKIE, isValidAdminPassword } from "@/lib/admin-auth";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
+import { getErrorMessage } from "@/lib/error-message";
 
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 7; // 7 hari
 
@@ -81,10 +82,7 @@ export async function createTransaction(items: CartItemInput[]) {
     console.error("createTransaction failed:", error);
     return {
       success: false as const,
-      error:
-        error instanceof Error
-          ? error.message
-          : "Gagal menyimpan transaksi. Cek konfigurasi Supabase.",
+      error: getErrorMessage(error, "Gagal menyimpan transaksi. Cek konfigurasi Supabase."),
     };
   }
 }
@@ -109,7 +107,7 @@ function toActionError(error: unknown, fallback: string): ActionResult {
   console.error(fallback, error);
   return {
     success: false,
-    error: error instanceof Error ? error.message : fallback,
+    error: getErrorMessage(error, fallback),
   };
 }
 

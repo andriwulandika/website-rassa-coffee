@@ -1,5 +1,6 @@
 import { getMenuItemRows } from "@/lib/menu-service";
 import { MenuManager } from "@/components/admin/MenuManager";
+import { getErrorMessage } from "@/lib/error-message";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +15,7 @@ export default async function AdminMenuPage() {
           Kelola menu belum bisa dimuat
         </h1>
         <p className="mt-2 text-sm text-foreground/70">
-          {error instanceof Error ? error.message : "Terjadi kesalahan."}
+          {getErrorMessage(error, "Terjadi kesalahan.")}
         </p>
         <p className="mt-2 text-sm text-foreground/70">
           Pastikan environment variable <code>SUPABASE_URL</code> dan{" "}

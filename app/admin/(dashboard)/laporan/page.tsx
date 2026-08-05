@@ -1,5 +1,6 @@
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { formatRp } from "@/lib/menu-data";
+import { getErrorMessage } from "@/lib/error-message";
 
 export const dynamic = "force-dynamic";
 
@@ -79,10 +80,7 @@ export default async function LaporanPage() {
   try {
     data = await getDashboardData();
   } catch (error) {
-    setupError =
-      error instanceof Error
-        ? error.message
-        : "Gagal memuat data laporan. Cek konfigurasi Supabase.";
+    setupError = getErrorMessage(error, "Gagal memuat data laporan. Cek konfigurasi Supabase.");
   }
 
   if (setupError || !data) {
