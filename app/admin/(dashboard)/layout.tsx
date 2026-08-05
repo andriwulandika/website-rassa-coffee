@@ -27,6 +27,12 @@ export default function AdminDashboardLayout({
               >
                 Laporan
               </Link>
+              <Link
+                href="/admin/menu"
+                className="text-primary-foreground/80 transition-colors hover:text-primary-foreground"
+              >
+                Kelola Menu
+              </Link>
             </nav>
           </div>
           <form action={logout}>

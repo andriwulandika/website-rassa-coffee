@@ -3,13 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { whatsapp } from "@/lib/whatsapp";
-import { menu, formatRp } from "@/lib/menu-data";
+import { formatRp } from "@/lib/menu-data";
+import { getMenu } from "@/lib/menu-service";
 
 export const metadata: Metadata = {
   title: "Menu | Rassa Coffee",
   description:
     "Daftar menu Rassa Coffee - kopi, teh, cokelat, dan makanan ringan di Kutacane, Aceh Tenggara.",
 };
+
+// Menu bisa diubah dari /admin/menu - revalidate tiap 60 detik supaya
+// perubahan tampil tanpa perlu deploy ulang.
+export const revalidate = 60;
 
 function PriceTag({ label, value }: { label?: string; value: number }) {
   return (
@@ -19,7 +24,9 @@ function PriceTag({ label, value }: { label?: string; value: number }) {
   );
 }
 
-export default function MenuPage() {
+export default async function MenuPage() {
+  const menu = await getMenu();
+
   return (
     <main className="bg-background">
       <section className="border-b border-primary/10 bg-gradient-to-b from-primary/10 via-background to-background px-6 py-20 text-center">
