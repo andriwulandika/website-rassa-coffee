@@ -6,10 +6,15 @@ import { whatsapp } from "@/lib/whatsapp";
 import { formatRp } from "@/lib/menu-data";
 import { getMenu } from "@/lib/menu-service";
 
+const title = "Menu | Rassa Coffee";
+const description =
+  "Daftar menu Rassa Coffee - kopi, teh, cokelat, dan makanan ringan di Kutacane, Aceh Tenggara.";
+
 export const metadata: Metadata = {
-  title: "Menu | Rassa Coffee",
-  description:
-    "Daftar menu Rassa Coffee - kopi, teh, cokelat, dan makanan ringan di Kutacane, Aceh Tenggara.",
+  title,
+  description,
+  openGraph: { title, description, url: "/menu" },
+  twitter: { title, description },
 };
 
 // Menu bisa diubah dari /admin/menu - revalidate tiap 60 detik supaya

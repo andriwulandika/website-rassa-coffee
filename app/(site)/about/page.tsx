@@ -4,10 +4,15 @@ import Link from "next/link";
 import { Award, Handshake, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+const title = "About | Rassa Coffee";
+const description =
+  "Kisah Rassa Coffee, coffee shop & B2B supplier kopi premium sejak 2016 di Kutacane, Aceh Tenggara.";
+
 export const metadata: Metadata = {
-  title: "About | Rassa Coffee",
-  description:
-    "Kisah Rassa Coffee, coffee shop & B2B supplier kopi premium sejak 2016 di Kutacane, Aceh Tenggara.",
+  title,
+  description,
+  openGraph: { title, description, url: "/about" },
+  twitter: { title, description },
 };
 
 const values = [

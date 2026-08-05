@@ -4,10 +4,15 @@ import { Globe, MapPin, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsapp } from "@/lib/whatsapp";
 
+const title = "Contact | Rassa Coffee";
+const description =
+  "Hubungi Rassa Coffee di Kutacane, Aceh Tenggara - untuk kunjungan ke kedai, pesan antar, maupun kerja sama pasokan kopi B2B.";
+
 export const metadata: Metadata = {
-  title: "Contact | Rassa Coffee",
-  description:
-    "Hubungi Rassa Coffee di Kutacane, Aceh Tenggara - untuk kunjungan ke kedai, pesan antar, maupun kerja sama pasokan kopi B2B.",
+  title,
+  description,
+  openGraph: { title, description, url: "/contact" },
+  twitter: { title, description },
 };
 
 const contactCards = [
