@@ -13,15 +13,15 @@ export const metadata: Metadata = {
 const values = [
   {
     icon: MapPin,
-    title: "Akar Dataran Tinggi Gayo",
+    title: "Akar Dataran Tinggi Gayo, Takengon",
     description:
-      "Biji kopi Arabika dan Robusta kami dipilih dari dataran tinggi Gayo, diproses dengan standar mutu premium, natural, hingga honey dan wine process.",
+      "Biji kopi Arabika dan Robusta kami dipilih dari dataran tinggi Gayo, Takengon, diproses dengan standar mutu premium, natural, hingga honey dan wine process.",
   },
   {
     icon: Award,
-    title: "Racikan Tangan Profesional",
+    title: "Dari Mobil Kopi ke Gallery",
     description:
-      "Diolah oleh tangan-tangan berpengalaman di kedai kami sejak 2016, menghasilkan olahan kopi yang konsisten dan penuh karakter.",
+      "Sejak berkeliling dengan mobil kopi di tahun 2016 hingga kini menjadi gallery kopi, racikan tangan berpengalaman kami tetap konsisten dan penuh karakter.",
   },
   {
     icon: Handshake,
@@ -42,8 +42,9 @@ export default function AboutPage() {
           Kisah Rassa Coffee
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-balance leading-relaxed text-foreground/70">
-          Dari sebuah kedai kecil di Kutacane, Aceh Tenggara, tumbuh menjadi
-          coffee shop sekaligus mitra pasokan kopi premium untuk bisnis Anda.
+          Dari sebuah mobil kopi yang berkeliling Kutacane, kini tumbuh
+          menjadi sebuah gallery kopi — coffee shop sekaligus mitra pasokan
+          kopi premium untuk bisnis Anda.
         </p>
       </section>
 
@@ -63,14 +64,21 @@ export default function AboutPage() {
               Perjalanan Kami
             </span>
             <h2 className="text-3xl font-semibold leading-tight tracking-tight text-primary sm:text-4xl">
-              Setiap Biji, Cerita dari Gayo
+              Dari Mobil Kopi, Menjadi Gallery
             </h2>
             <p className="text-balance leading-relaxed text-foreground/70">
-              Rassa Coffee memilih biji kopi Arabika dan Robusta berkualitas
-              dari dataran tinggi Gayo, diolah dengan proses natural, honey,
-              hingga wine oleh tangan-tangan profesional. Di kedai kami,
-              setiap cangkir diseduh dengan hati — menjadi tempat singgah
-              yang hangat untuk warga Kutacane maupun siapa saja yang mampir.
+              Rassa Coffee lahir pada 2016, bermula dari sebuah mobil kopi
+              yang berkeliling menyapa warga Kutacane — menghadirkan
+              secangkir kopi hangat dari satu sudut jalan ke sudut jalan
+              lain. Dari perjalanan itulah nama Rassa mulai dikenal dan
+              dicintai.
+            </p>
+            <p className="text-balance leading-relaxed text-foreground/70">
+              Bertahun-tahun berjalan, semangat yang sama membawa Rassa
+              Coffee tumbuh menjadi sebuah gallery kopi yang kini berdiri di
+              Kutacane — tempat singgah yang nyaman untuk menikmati biji
+              kopi pilihan dari dataran tinggi Gayo, Takengon, diseduh
+              dengan resep dan racikan khas yang sama sejak awal.
             </p>
             <p className="text-balance leading-relaxed text-foreground/70">
               Seiring waktu, Rassa Coffee juga tumbuh sebagai mitra B2B —

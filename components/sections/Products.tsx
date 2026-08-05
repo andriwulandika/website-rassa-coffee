@@ -35,10 +35,10 @@ export function Products() {
             Kopi Gayo, Arabika &amp; Robusta
           </h2>
           <p className="text-balance leading-relaxed text-foreground/70">
-            Rassa Coffee memasok biji kopi pilihan dataran tinggi Gayo dalam
-            berbagai grade untuk kebutuhan kafe, resto, dan mitra bisnis
-            Anda — diproses oleh tangan-tangan profesional agar hasil
-            olahan kopi sempurna dan konsisten.
+            Rassa Coffee memasok biji kopi pilihan dataran tinggi Gayo,
+            Takengon, dalam berbagai grade untuk kebutuhan kafe, resto, dan
+            mitra bisnis Anda — diproses oleh tangan-tangan profesional agar
+            hasil olahan kopi sempurna dan konsisten.
           </p>
 
           <div className="flex flex-wrap gap-2">

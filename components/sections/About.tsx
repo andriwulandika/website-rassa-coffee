@@ -6,7 +6,7 @@ const highlights = [
     icon: Leaf,
     title: "Biji Kopi Pilihan",
     description:
-      "Bersumber dari dataran tinggi Aceh Tenggara, diolah dengan standar mutu terjaga.",
+      "Bersumber dari dataran tinggi Gayo, Takengon, diolah dengan standar mutu terjaga.",
   },
   {
     icon: Coffee,
@@ -35,11 +35,13 @@ export function About() {
               Dari Kutacane, untuk Pecinta Kopi
             </h2>
             <p className="text-balance leading-relaxed text-foreground/70">
-              Rassa Coffee lahir dari kecintaan pada kopi asli Aceh Tenggara.
-              Kami merawat setiap proses — dari biji hingga cangkir — agar
-              kehangatan dan cita rasa khas Kutacane sampai ke meja Anda,
-              baik sebagai tempat singgah yang cozy maupun sebagai mitra
-              pasokan kopi untuk bisnis Anda.
+              Berdiri sejak 2016, Rassa Coffee bermula dari sebuah mobil kopi
+              keliling di Kutacane, dan kini tumbuh menjadi sebuah gallery
+              kopi. Kami merawat setiap proses — dari biji pilihan dataran
+              tinggi Gayo, Takengon, hingga cangkir — agar kehangatan dan
+              cita rasa khas Rassa sampai ke meja Anda, baik sebagai tempat
+              singgah yang cozy maupun sebagai mitra pasokan kopi untuk
+              bisnis Anda.
             </p>
           </div>
 

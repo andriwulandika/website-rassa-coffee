@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { whatsapp } from "@/lib/whatsapp";
+import { formatRp } from "@/lib/menu-data";
+import { getMenu } from "@/lib/menu-service";
 
 export const metadata: Metadata = {
   title: "Menu | Rassa Coffee",
@@ -9,69 +12,9 @@ export const metadata: Metadata = {
     "Daftar menu Rassa Coffee - kopi, teh, cokelat, dan makanan ringan di Kutacane, Aceh Tenggara.",
 };
 
-type MenuItem = {
-  name: string;
-  hot?: number;
-  iced?: number;
-  price?: number;
-};
-
-type MenuCategory = {
-  category: string;
-  items: MenuItem[];
-};
-
-const menu: MenuCategory[] = [
-  {
-    category: "Kopi",
-    items: [
-      { name: "Espresso", hot: 12000 },
-      { name: "Dopio", hot: 12000 },
-      { name: "Americano", hot: 13000, iced: 15000 },
-      { name: "Cappuccino", hot: 13000, iced: 15000 },
-      { name: "Sanger Espresso", hot: 12000, iced: 15000 },
-      { name: "Sanger Espresso Mini", hot: 12000 },
-      { name: "Coffee Latte", hot: 15000, iced: 17000 },
-      { name: "Mokacino", hot: 13000, iced: 15000 },
-      { name: "Long Black", hot: 13000, iced: 15000 },
-      { name: "Tubruk", hot: 10000 },
-      { name: "Black Coffee", hot: 5000 },
-      { name: "V60", hot: 30000 },
-      { name: "Vietnam Drip", hot: 15000 },
-      { name: "Pren Fresh", hot: 15000 },
-      { name: "Moka Pot", hot: 20000 },
-      { name: "Cold Brew", price: 25000 },
-      { name: "Mocktail", iced: 20000 },
-    ],
-  },
-  {
-    category: "Tea & Chocolate",
-    items: [
-      { name: "Green Tea", hot: 8000, iced: 10000 },
-      { name: "Thai Tea", hot: 8000, iced: 10000 },
-      { name: "Green Tea Latte", hot: 13000, iced: 15000 },
-      { name: "Thai Tea Latte", hot: 13000, iced: 15000 },
-      { name: "Lemon Tea", hot: 8000, iced: 10000 },
-      { name: "Matcha", hot: 10000, iced: 10000 },
-      { name: "Matcha Latte", hot: 13000, iced: 15000 },
-      { name: "Chocolate", hot: 8000, iced: 10000 },
-      { name: "Teh Tarik", hot: 10000, iced: 15000 },
-    ],
-  },
-  {
-    category: "Makanan",
-    items: [
-      { name: "Nasi Goreng", price: 15000 },
-      { name: "Mie Rassa", price: 15000 },
-      { name: "Kentang Goreng", price: 10000 },
-      { name: "Piscok", price: 10000 },
-    ],
-  },
-];
-
-function formatRp(value: number) {
-  return `Rp ${value.toLocaleString("id-ID")}`;
-}
+// Menu bisa diubah dari /admin/menu - revalidate tiap 60 detik supaya
+// perubahan tampil tanpa perlu deploy ulang.
+export const revalidate = 60;
 
 function PriceTag({ label, value }: { label?: string; value: number }) {
   return (
@@ -81,7 +24,9 @@ function PriceTag({ label, value }: { label?: string; value: number }) {
   );
 }
 
-export default function MenuPage() {
+export default async function MenuPage() {
+  const menu = await getMenu();
+
   return (
     <main className="bg-background">
       <section className="border-b border-primary/10 bg-gradient-to-b from-primary/10 via-background to-background px-6 py-20 text-center">
@@ -138,15 +83,11 @@ export default function MenuPage() {
             Mau Pesan Antar?
           </h2>
           <p className="mx-auto mt-3 max-w-sm text-balance leading-relaxed text-foreground/70">
-            Nikmati menu Rassa Coffee tanpa perlu keluar rumah — chat nomor
-            pesan antar kami.
+            Nikmati menu Rassa Coffee tanpa perlu keluar rumah — chat kami
+            dengan format pesanan yang sudah siap, tinggal isi.
           </p>
           <Button asChild size="lg" className="mt-6 rounded-full px-8 text-base">
-            <Link
-              href="https://wa.me/6282252550984"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link href={whatsapp.orderLink} target="_blank" rel="noopener noreferrer">
               Chat Pesan Antar
             </Link>
           </Button>
