@@ -24,7 +24,7 @@ export default function AdminLoginPage({
           Admin Rassa Coffee
         </h1>
         <p className="mt-1 text-sm text-foreground/60">
-          Masukkan password untuk masuk ke kasir & laporan.
+          Masukkan password untuk masuk ke area admin.
         </p>
 
         <input type="hidden" name="next" value={next} />
