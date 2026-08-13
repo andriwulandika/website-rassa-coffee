@@ -3,7 +3,11 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { ADMIN_SESSION_COOKIE, isValidAdminPassword } from "@/lib/admin-auth";
+import {
+  ADMIN_SESSION_COOKIE,
+  getAdminRole,
+  isPathAllowedForRole,
+} from "@/lib/admin-auth";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { getErrorMessage } from "@/lib/error-message";
 
@@ -13,7 +17,8 @@ export async function login(formData: FormData) {
   const password = String(formData.get("password") ?? "");
   const next = String(formData.get("next") ?? "/admin");
 
-  if (!isValidAdminPassword(password)) {
+  const role = getAdminRole(password);
+  if (!role) {
     redirect(`/admin/login?error=1&next=${encodeURIComponent(next)}`);
   }
 
@@ -25,12 +30,22 @@ export async function login(formData: FormData) {
     maxAge: SESSION_MAX_AGE_SECONDS,
   });
 
-  redirect(next.startsWith("/admin") ? next : "/admin");
+  const destination = next.startsWith("/admin") ? next : "/admin";
+  redirect(isPathAllowedForRole(role, destination) ? destination : "/admin");
 }
 
 export async function logout() {
   cookies().delete(ADMIN_SESSION_COOKIE);
   redirect("/admin/login");
+}
+
+/** Dipakai server action yang cuma boleh dijalankan owner (mis. ubah menu). */
+function requireOwner() {
+  const session = cookies().get(ADMIN_SESSION_COOKIE)?.value;
+  const role = session ? getAdminRole(session) : null;
+  if (role !== "owner") {
+    throw new Error("Hanya owner yang bisa melakukan aksi ini.");
+  }
 }
 
 export type CartItemInput = {
@@ -112,6 +127,11 @@ function toActionError(error: unknown, fallback: string): ActionResult {
 }
 
 export async function createMenuItem(input: MenuItemInput): Promise<ActionResult> {
+  try {
+    requireOwner();
+  } catch (error) {
+    return toActionError(error, "Hanya owner yang bisa melakukan aksi ini.");
+  }
   if (!input.name.trim() || !input.category.trim()) {
     return { success: false, error: "Nama dan kategori wajib diisi." };
   }
@@ -141,6 +161,11 @@ export async function updateMenuItem(
   id: string,
   input: MenuItemInput
 ): Promise<ActionResult> {
+  try {
+    requireOwner();
+  } catch (error) {
+    return toActionError(error, "Hanya owner yang bisa melakukan aksi ini.");
+  }
   if (!input.name.trim() || !input.category.trim()) {
     return { success: false, error: "Nama dan kategori wajib diisi." };
   }
@@ -171,6 +196,7 @@ export async function updateMenuItem(
 
 export async function deleteMenuItem(id: string): Promise<ActionResult> {
   try {
+    requireOwner();
     const supabase = getSupabaseAdmin();
     const { error } = await supabase.from("menu_items").delete().eq("id", id);
     if (error) throw error;

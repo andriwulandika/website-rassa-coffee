@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { ADMIN_SESSION_COOKIE, isValidAdminPassword } from "@/lib/admin-auth";
+import {
+  ADMIN_SESSION_COOKIE,
+  getAdminRole,
+  isPathAllowedForRole,
+} from "@/lib/admin-auth";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -13,11 +17,16 @@ export function middleware(request: NextRequest) {
   }
 
   const session = request.cookies.get(ADMIN_SESSION_COOKIE)?.value;
+  const role = session ? getAdminRole(session) : null;
 
-  if (!session || !isValidAdminPassword(session)) {
+  if (!role) {
     const loginUrl = new URL("/admin/login", request.url);
     loginUrl.searchParams.set("next", pathname);
     return NextResponse.redirect(loginUrl);
+  }
+
+  if (!isPathAllowedForRole(role, pathname)) {
+    return NextResponse.redirect(new URL("/admin", request.url));
   }
 
   return NextResponse.next();
